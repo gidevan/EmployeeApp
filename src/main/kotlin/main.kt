@@ -23,6 +23,12 @@ fun main(args: Array<String>) {
 
     testEmployeeRepository()
 
+    println("==========================named function argument test==========================================")
+    println(namedFunctionExample())
+    println(namedFunctionExample("first_arg"))
+    println(namedFunctionExample(arg2 = "second_arg"))
+    println(namedFunctionExample(arg2 = "second_arg", arg1 = "first_arg"))
+
 }
 
 fun testEmployeeRepository() {
@@ -35,4 +41,8 @@ fun testEmployeeRepository() {
         println("employee: [${employee.id}, ${employee.firstName}, ${employee.lastName}, ${employee.age}]")
     }
 
+}
+
+fun namedFunctionExample(arg1 : String = "default_value_arg1", arg2 : String = "default_value_arg_2"): String {
+    return "[$arg1] : [$arg2]"
 }
