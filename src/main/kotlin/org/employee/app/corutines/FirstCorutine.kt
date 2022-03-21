@@ -2,10 +2,33 @@ package org.employee.app.corutines
 
 import kotlinx.coroutines.*
 
-fun main() = runBlocking { // this: CoroutineScope
-    launch { // launch a new coroutine and continue
-        delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
-        println("World!") // print after delay
+fun main() = runBlocking {
+    launch {
+        doWorld()
+        doWorld1()
     }
-    println("Hello") // main coroutine continues while a previous one is delayed
+
+    launch { doWorld2() }
+
+    println("Hello")
 }
+
+suspend fun doWorld() {
+    println("doWorld")
+    delay(1000L)
+    println("World!")
+}
+
+suspend fun doWorld1() {
+    println("doWorld1")
+    delay(500L)
+    println("World_1!")
+}
+
+suspend fun doWorld2() {
+    println("doWorld2")
+    delay(300L)
+    println("World_2!")
+}
+
+
